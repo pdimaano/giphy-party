@@ -10,7 +10,8 @@ async function searchGiphy(evt) {
   let response = await axios.get('http://api.giphy.com/v1/gifs/search',
   {params: {q: giphyValue, api_key: 'MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym'}})
   let randomIndex = generateRandomNumber(response.data.data.length);
-  console.log(response.data.data)
+  const {url} = response.data.data[randomIndex].images.original;
+  appendGiphy(url);
 }
 
 function generateRandomNumber(arrayLength) {
